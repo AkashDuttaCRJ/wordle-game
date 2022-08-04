@@ -1,0 +1,343 @@
+/* CSS RESETS */
+
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+
+/* VARIABLES */
+
+:root {
+    --var-color-green: #538d4e;
+    --var-color-yellow: #b59f3b;
+    --var-color-gray: #3b3a3c;
+    --var-color-default: #818384;
+    --var-color-white: #fff;
+    --var-color-body: #121213;
+
+    --var-color-default-button-pressed: #2b2a2c;
+    --var-color-green-button-pressed: #43723f;
+    --var-color-yellow-button-pressed: #917f2f;
+
+    --var-default-border-color: #3a3a3c;
+    --var-active-border-color: #565758;
+
+    --square-size: 54px;
+    --grid-gap: 5px;
+    --key-width: 40px;
+    --long-key-width: 60px;
+    --key-height: 54px;
+}
+
+
+/* CUSTOM STYLES */
+
+body {
+    background-color: var(--var-color-body);
+    color: var(--var-color-white);
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 32px;
+    font-weight: 700;
+    width: max(200px, 50%);
+    text-align: center;
+    border-bottom: 1px solid var(--var-color-gray);
+    line-height: 60px;
+}
+
+.message-container {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.message {
+    background-color: var(--var-color-white);
+    color: var(--var-color-body);
+    padding: 4px 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-block: 5px;
+}
+
+.wordle-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.wordle-container {
+    display: grid;
+    grid-template-columns: repeat(5, var(--square-size));
+    gap: var(--grid-gap);
+    align-items: center;
+    justify-content: center;
+}
+
+.square {
+    width: var(--square-size);
+    height: var(--square-size);
+    background-color: transparent;
+    border: 2px solid var(--var-default-border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+.active {
+    border: 2px solid var(--var-active-border-color);
+}
+
+.green {
+    background-color: var(--var-color-green);
+    border: 2px solid var(--var-color-green);
+}
+
+.yellow {
+    background-color: var(--var-color-yellow);
+    border: 2px solid var(--var-color-yellow);
+}
+
+.gray {
+    background-color: var(--var-color-gray);
+    border: 2px solid var(--var-color-gray);
+}
+
+.keyboard-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-inline: auto;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    width: 500px;
+    row-gap: calc(var(--grid-gap) * 1.6);
+    column-gap: var(--grid-gap);
+}
+
+.keyboard-button {
+    width: var(--key-width);
+    height: var(--key-height);
+    background-color: var(--var-color-default);
+    color: inherit;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.keyboard-button:nth-child(11) {
+    margin-left: 20px;
+}
+
+.keyboard-button:nth-child(19) {
+    margin-right: 20px;
+}
+
+.long-key {
+    width: var(--long-key-width);
+}
+
+.pressed {
+    background-color: var(--var-color-default-button-pressed) !important;
+    transform: scale(0.95);
+}
+
+.pressed-green-key {
+    background-color: var(--var-color-green-button-pressed) !important;
+    transform: scale(0.95);
+}
+
+.pressed-yellow-key {
+    background-color: var(--var-color-yellow-button-pressed) !important;
+    transform: scale(0.95);
+}
+
+.green-key {
+    background-color: var(--var-color-green);
+}
+
+.yellow-key {
+    background-color: var(--var-color-yellow);
+}
+
+.gray-key {
+    background-color: var(--var-color-gray);
+}
+
+
+/* ANIMATIONS */
+
+.flip {
+    animation: flip-box 600ms linear forwards;
+}
+
+.shake {
+    animation: shake 500ms linear forwards;
+}
+
+.bounce {
+    animation: bounce 750ms linear forwards;
+}
+
+.zoom {
+    animation: zoom 150ms linear forwards;
+}
+
+@keyframes flip-box {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    12.5% {
+        transform: translateX(-8px);
+    }
+    25% {
+        transform: translateX(0);
+    }
+    37.5% {
+        transform: translateX(6px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    62.5% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(0);
+    }
+    87.5% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-8px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(4px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
